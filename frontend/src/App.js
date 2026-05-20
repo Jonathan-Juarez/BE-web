@@ -37,10 +37,10 @@ const features = [
   { icon: Heart, title: "Fe de Jesús", desc: "Edición de Carlos E. Aeschlimann H. (1ra ed.).", tier: "free" },
   { icon: CalendarDays, title: "Reavivados por su Palabra", desc: "Plan de lectura diario #RPSP.", tier: "free" },
   { icon: NotebookPen, title: "Centro de Estudio", desc: "Notas, marcadores y progreso personal.", tier: "free" },
+  { icon: Music, title: "Himnario con internet", desc: "Acceso directo a himnos en YouTube.", tier: "free" },
   { icon: BookCopy, title: "Modo Dual", desc: "Compara dos versiones de la Biblia lado a lado.", tier: "premium" },
-  { icon: ImageIcon, title: "Modo Presentación", desc: "Versículos con fondos dinámicos para cultos.", tier: "premium" },
-  { icon: ListChecks, title: "Versículo de Memoria", desc: "Memoriza con repaso espaciado guiado.", tier: "premium" },
-  { icon: Music, title: "Himnario con internet", desc: "Reproducción en streaming vía YouTube.", tier: "premium" },
+  { icon: ImageIcon, title: "Modo Presentación", desc: "Proyecta versículos, el versículo de memoria de la Lección y el Himnario adventista.", tier: "premium" },
+  { icon: Sparkle, title: "Personalización de fondos", desc: "Personaliza los fondos para tus presentaciones.", tier: "premium" },
   { icon: WifiOff, title: "Himnario sin internet", desc: "Audio descargable para escuchar offline.", tier: "premium" },
   { icon: Volume2, title: "Lectura de Voz (TTS)", desc: "Escucha la Biblia en tiempo real.", tier: "premium" },
   { icon: BookMarked, title: "Diccionario Bíblico", desc: "Definiciones integradas con un toque.", tier: "premium" },
@@ -170,7 +170,7 @@ function App() {
               </div>
               <div className="h-8 w-px bg-white/10" />
               <div>
-                <span className="text-white font-semibold text-lg">9</span>
+                <span className="text-white font-semibold text-lg">10</span>
                 <span className="ml-2">gratis</span>
               </div>
               <div className="h-8 w-px bg-white/10" />
@@ -280,6 +280,7 @@ function App() {
                 "Fe de Jesús (Aeschlimann, 1ra ed.)",
                 "Reavivados por su Palabra",
                 "Centro de Estudio (notas y marcadores)",
+                "Himnario con internet (YouTube)",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
@@ -308,9 +309,9 @@ function App() {
               {[
                 "Todo lo del plan Gratuito",
                 "Modo Dual: compara 2 versiones",
-                "Modo Presentación con fondos",
-                "Versículo de Memoria",
-                "Himnario con audio (YouTube + offline)",
+                "Modo Presentación (versículos, memoria e himnos)",
+                "Personalización de fondos para presentar",
+                "Himnario sin internet (audio offline)",
                 "Lectura de Voz (TTS)",
                 "Diccionario Bíblico",
                 "Comentario Bíblico Adventista*",
