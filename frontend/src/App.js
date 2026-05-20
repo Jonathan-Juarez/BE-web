@@ -19,29 +19,33 @@ import {
   Monitor,
   ArrowRight,
   Download,
-  ShieldCheck,
+  Info,
+  FileText,
+  Sparkle,
 } from "lucide-react";
 
 const HERO_IMAGE =
   "https://customer-assets.emergentagent.com/job_study-connect-64/artifacts/41a7zvdw_image.png";
 
 const features = [
-  { icon: BookOpen, title: "Múltiples versiones de la Biblia", desc: "Reina Valera, NVI y más, todas a un clic." },
-  { icon: Sparkles, title: "Asistente con IA", desc: "Resuelve dudas y profundiza pasajes al instante." },
-  { icon: Search, title: "Búsqueda rápida", desc: "Localiza libros y versículos en segundos." },
-  { icon: ScanSearch, title: "Búsqueda avanzada", desc: "Filtra por palabras, frases y combinaciones." },
-  { icon: ImageIcon, title: "Modo Presentación", desc: "Fondos dinámicos para cultos y reuniones." },
-  { icon: ListChecks, title: "Temas de estudio", desc: "Agrupa versículos para tus sermones." },
-  { icon: GraduationCap, title: "Escuela Sabática", desc: "Lección diaria y versículo de memoria." },
-  { icon: NotebookPen, title: "Centro de Estudio", desc: "Notas, marcadores y progreso personal." },
-  { icon: CalendarDays, title: "Reavivados por su Palabra", desc: "Plan de lectura diario #RPSP." },
-  { icon: BookCopy, title: "Modo Dual", desc: "Alterna entre Biblia y Lección sin perder el hilo." },
-  { icon: Volume2, title: "Lectura de Voz (TTS)", desc: "Escucha la Palabra en tiempo real." },
-  { icon: BookMarked, title: "Diccionario Bíblico", desc: "Definiciones integradas con un toque." },
-  { icon: MessageSquareQuote, title: "Comentario Bíblico Adventista", desc: "CBA disponible para libros seleccionados." },
-  { icon: Music, title: "Himnario con internet", desc: "Reproduce himnos en streaming." },
-  { icon: WifiOff, title: "Himnario sin internet", desc: "Disfruta tus himnos offline en cualquier lugar." },
-  { icon: Heart, title: "Fe de Jesús", desc: "28 creencias fundamentales al alcance." },
+  { icon: BookOpen, title: "5 versiones de la Biblia", desc: "RVR60, RVR95, NVI, DHH y PDT incluidas.", tier: "free" },
+  { icon: Search, title: "Búsqueda rápida", desc: "Localiza libros y versículos en segundos.", tier: "free" },
+  { icon: ScanSearch, title: "Búsqueda avanzada", desc: "Filtra por palabras, frases y combinaciones.", tier: "free" },
+  { icon: Sparkles, title: "Asistente con IA", desc: "Resuelve dudas y profundiza pasajes al instante.", tier: "free" },
+  { icon: GraduationCap, title: "Escuela Sabática", desc: "Lección diaria al alcance de un clic.", tier: "free" },
+  { icon: FileText, title: "Texto del Himnario", desc: "Letras completas de los himnos para leer.", tier: "free" },
+  { icon: Heart, title: "Fe de Jesús", desc: "Edición de Carlos E. Aeschlimann H. (1ra ed.).", tier: "free" },
+  { icon: CalendarDays, title: "Reavivados por su Palabra", desc: "Plan de lectura diario #RPSP.", tier: "free" },
+  { icon: NotebookPen, title: "Centro de Estudio", desc: "Notas, marcadores y progreso personal.", tier: "free" },
+  { icon: BookCopy, title: "Modo Dual", desc: "Compara dos versiones de la Biblia lado a lado.", tier: "premium" },
+  { icon: ImageIcon, title: "Modo Presentación", desc: "Versículos con fondos dinámicos para cultos.", tier: "premium" },
+  { icon: ListChecks, title: "Versículo de Memoria", desc: "Memoriza con repaso espaciado guiado.", tier: "premium" },
+  { icon: Music, title: "Himnario con internet", desc: "Reproducción en streaming vía YouTube.", tier: "premium" },
+  { icon: WifiOff, title: "Himnario sin internet", desc: "Audio descargable para escuchar offline.", tier: "premium" },
+  { icon: Volume2, title: "Lectura de Voz (TTS)", desc: "Escucha la Biblia en tiempo real.", tier: "premium" },
+  { icon: BookMarked, title: "Diccionario Bíblico", desc: "Definiciones integradas con un toque.", tier: "premium" },
+  { icon: MessageSquareQuote, title: "Comentario Bíblico Adventista", desc: "CBA disponible para libros seleccionados.", tier: "premium" },
+  { icon: ListChecks, title: "Temas de Estudio", desc: "Agrupa versículos para tus sermones.", tier: "premium" },
 ];
 
 const DownloadButton = ({ size = "lg", testid = "download-btn" }) => {
@@ -139,39 +143,40 @@ function App() {
           <div className="lg:col-span-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300 mb-6">
               <Monitor className="h-3.5 w-3.5 text-[#5B8DEF]" />
-              Aplicación para Windows 10 / 11
+              Aplicación de escritorio para Windows 11
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
               Tu biblioteca bíblica completa,
               <span className="text-[#5B8DEF]"> en tu PC.</span>
             </h1>
             <p className="mt-6 text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed">
-              Biblia, Escuela Sabática, Himnario, Fe de Jesús y un asistente con IA.
-              Todo en una sola aplicación de escritorio, online y offline.
+              Biblia en 5 versiones, Escuela Sabática, Himnario, Fe de Jesús y un
+              asistente con IA. Empieza gratis y desbloquea funciones avanzadas
+              cuando quieras.
             </p>
 
             <div id="download" className="mt-10" data-testid="hero-download-wrap">
               <DownloadButton size="lg" testid="hero-download-btn" />
               <p className="mt-3 text-xs text-zinc-500 flex items-center gap-2">
-                <ShieldCheck className="h-3.5 w-3.5 text-emerald-400/70" />
-                Instalador .exe firmado · Compatible con Windows 10 y 11
+                <Info className="h-3.5 w-3.5 text-zinc-400" />
+                Instalador .exe · Probado en Windows 11 · Sin firma digital aún
               </p>
             </div>
 
             <div className="mt-10 flex items-center gap-6 text-xs text-zinc-500">
               <div>
-                <span className="text-white font-semibold text-lg">16+</span>
+                <span className="text-white font-semibold text-lg">18</span>
                 <span className="ml-2">funciones</span>
               </div>
               <div className="h-8 w-px bg-white/10" />
               <div>
-                <span className="text-white font-semibold text-lg">100%</span>
+                <span className="text-white font-semibold text-lg">9</span>
                 <span className="ml-2">gratis</span>
               </div>
               <div className="h-8 w-px bg-white/10" />
               <div>
-                <span className="text-white font-semibold text-lg">Offline</span>
-                <span className="ml-2">disponible</span>
+                <span className="text-white font-semibold text-lg">$100</span>
+                <span className="ml-2">MXN pago único</span>
               </div>
             </div>
           </div>
@@ -202,16 +207,27 @@ function App() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
           {features.map((f, i) => {
             const Icon = f.icon;
+            const isPremium = f.tier === "premium";
             return (
               <div
                 key={f.title}
                 data-testid={`feature-card-${i}`}
-                className="group rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1"
+                className="group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1"
               >
+                <span
+                  data-testid={`feature-tier-${i}`}
+                  className={`absolute top-4 right-4 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                    isPremium
+                      ? "bg-[#2F6BFF]/15 text-[#5B8DEF] border border-[#2F6BFF]/30"
+                      : "bg-emerald-400/10 text-emerald-300 border border-emerald-400/20"
+                  }`}
+                >
+                  {isPremium ? "Premium" : "Gratis"}
+                </span>
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#2F6BFF]/15 text-[#5B8DEF] mb-4 group-hover:bg-[#2F6BFF]/25 transition-colors">
                   <Icon className="h-5 w-5" strokeWidth={1.8} />
                 </div>
-                <h3 className="text-base font-semibold text-white mb-1.5 leading-snug">
+                <h3 className="text-base font-semibold text-white mb-1.5 leading-snug pr-16">
                   {f.title}
                 </h3>
                 <p className="text-sm text-zinc-400 leading-relaxed">{f.desc}</p>
@@ -223,7 +239,91 @@ function App() {
         <p className="mt-10 text-xs text-zinc-500 italic max-w-2xl">
           * El Comentario Bíblico Adventista (CBA) está parcialmente disponible para
           Génesis, Éxodo, Levítico, Números, Deuteronomio (1–5), Isaías y Efesios.
+          La Lección, el Himnario online y la IA requieren conexión a internet.
         </p>
+      </section>
+
+      {/* PRICING */}
+      <section
+        data-testid="pricing-section"
+        className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 py-20 sm:py-24 border-t border-white/5"
+      >
+        <div className="max-w-2xl mb-12">
+          <p className="text-xs uppercase tracking-[0.2em] text-[#5B8DEF] mb-4">
+            Precio
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+            Empieza gratis. Crece cuando quieras.
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+          <div
+            data-testid="plan-free"
+            className="rounded-2xl bg-white/[0.03] p-8 sm:p-10 border border-white/5"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-semibold">Plan Gratuito</h3>
+              <span className="text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">
+                Gratis
+              </span>
+            </div>
+            <p className="text-4xl font-bold mb-2">$0 <span className="text-base font-normal text-zinc-500">MXN</span></p>
+            <p className="text-sm text-zinc-400 mb-6">Para siempre, sin tarjeta.</p>
+            <ul className="space-y-2.5 text-sm text-zinc-300">
+              {[
+                "5 versiones de la Biblia",
+                "Búsqueda rápida y avanzada",
+                "Asistente con IA",
+                "Lección de Escuela Sabática",
+                "Texto del Himnario",
+                "Fe de Jesús (Aeschlimann, 1ra ed.)",
+                "Reavivados por su Palabra",
+                "Centro de Estudio (notas y marcadores)",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div
+            data-testid="plan-premium"
+            className="relative rounded-2xl bg-gradient-to-br from-[#2F6BFF]/10 via-white/[0.03] to-white/[0.03] p-8 sm:p-10 border border-[#2F6BFF]/30"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-semibold flex items-center gap-2">
+                <Sparkle className="h-4 w-4 text-[#5B8DEF]" />
+                Plan Premium
+              </h3>
+              <span className="text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#2F6BFF]/15 text-[#5B8DEF] border border-[#2F6BFF]/30">
+                Pago único
+              </span>
+            </div>
+            <p className="text-4xl font-bold mb-2">$100 <span className="text-base font-normal text-zinc-500">MXN</span></p>
+            <p className="text-sm text-zinc-400 mb-6">Una sola vez, dentro de la app.</p>
+            <ul className="space-y-2.5 text-sm text-zinc-300">
+              {[
+                "Todo lo del plan Gratuito",
+                "Modo Dual: compara 2 versiones",
+                "Modo Presentación con fondos",
+                "Versículo de Memoria",
+                "Himnario con audio (YouTube + offline)",
+                "Lectura de Voz (TTS)",
+                "Diccionario Bíblico",
+                "Comentario Bíblico Adventista*",
+                "Temas de Estudio para sermones",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#5B8DEF] flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* CTA FINAL */}
@@ -246,7 +346,7 @@ function App() {
               <DownloadButton size="lg" testid="cta-download-btn" />
             </div>
             <p className="mt-4 text-xs text-zinc-500">
-              Windows 10 / 11 · Instalador .exe · 100% gratis
+              Windows 11 · Instalador .exe · Empieza gratis
             </p>
           </div>
         </div>
