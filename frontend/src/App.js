@@ -33,18 +33,17 @@ const features = [
   { icon: ScanSearch, title: "Búsqueda avanzada", desc: "Filtra por palabras, frases y combinaciones.", tier: "free" },
   { icon: Sparkles, title: "Asistente con IA", desc: "Resuelve dudas y profundiza pasajes al instante.", tier: "free" },
   { icon: GraduationCap, title: "Escuela Sabática", desc: "Lección diaria al alcance de un clic.", tier: "free" },
-  { icon: FileText, title: "Texto del Himnario", desc: "Letras completas de los himnos para leer.", tier: "free" },
+  { icon: FileText, title: "Texto y Audio del Himnario", desc: "Letras y audio de los himnos, también offline.", tier: "free" },
   { icon: Heart, title: "Fe de Jesús", desc: "Edición de Carlos E. Aeschlimann H. (1ra ed.).", tier: "free" },
   { icon: CalendarDays, title: "Reavivados por su Palabra", desc: "Plan de lectura diario #RPSP.", tier: "free" },
   { icon: NotebookPen, title: "Centro de Estudio", desc: "Notas, marcadores y progreso personal.", tier: "free" },
   { icon: Music, title: "Himnario con internet", desc: "Acceso directo a himnos en YouTube.", tier: "free" },
+  { icon: BookMarked, title: "Diccionario Bíblico", desc: "Definiciones integradas con un toque.", tier: "free" },
+  { icon: MessageSquareQuote, title: "Comentario Bíblico Adventista", desc: "CBA disponible para libros seleccionados.", tier: "free" },
   { icon: BookCopy, title: "Modo Dual", desc: "Compara dos versiones de la Biblia lado a lado.", tier: "premium" },
   { icon: ImageIcon, title: "Modo Presentación", desc: "Proyecta versículos, el versículo de memoria de la Lección y el Himnario adventista.", tier: "premium" },
   { icon: Sparkle, title: "Personalización de fondos", desc: "Personaliza los fondos para tus presentaciones.", tier: "premium" },
-  { icon: WifiOff, title: "Himnario sin internet", desc: "Audio descargable para escuchar offline.", tier: "premium" },
   { icon: Volume2, title: "Lectura de Voz (TTS)", desc: "Escucha la Biblia en tiempo real.", tier: "premium" },
-  { icon: BookMarked, title: "Diccionario Bíblico", desc: "Definiciones integradas con un toque.", tier: "premium" },
-  { icon: MessageSquareQuote, title: "Comentario Bíblico Adventista", desc: "CBA disponible para libros seleccionados.", tier: "premium" },
   { icon: ListChecks, title: "Temas de Estudio", desc: "Agrupa versículos para tus sermones.", tier: "premium" },
 ];
 
@@ -165,12 +164,12 @@ function App() {
 
             <div className="mt-10 flex items-center gap-6 text-xs text-zinc-500">
               <div>
-                <span className="text-white font-semibold text-lg">18</span>
+                <span className="text-white font-semibold text-lg">17</span>
                 <span className="ml-2">funciones</span>
               </div>
               <div className="h-8 w-px bg-white/10" />
               <div>
-                <span className="text-white font-semibold text-lg">10</span>
+                <span className="text-white font-semibold text-lg">12</span>
                 <span className="ml-2">gratis</span>
               </div>
               <div className="h-8 w-px bg-white/10" />
@@ -276,11 +275,13 @@ function App() {
                 "Búsqueda rápida y avanzada",
                 "Asistente con IA",
                 "Lección de Escuela Sabática",
-                "Texto del Himnario",
+                "Texto y Audio del Himnario",
                 "Fe de Jesús (Aeschlimann, 1ra ed.)",
                 "Reavivados por su Palabra",
                 "Centro de Estudio (notas y marcadores)",
                 "Himnario con internet (YouTube)",
+                "Diccionario Bíblico",
+                "Comentario Bíblico Adventista*",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
@@ -311,10 +312,7 @@ function App() {
                 "Modo Dual: compara 2 versiones",
                 "Modo Presentación (versículos, memoria e himnos)",
                 "Personalización de fondos para presentar",
-                "Himnario sin internet (audio offline)",
                 "Lectura de Voz (TTS)",
-                "Diccionario Bíblico",
-                "Comentario Bíblico Adventista*",
                 "Temas de Estudio para sermones",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
