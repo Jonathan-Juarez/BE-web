@@ -1,116 +1,95 @@
 import "@/App.css";
 import {
   BookOpen,
-  FolderTree,
-  NotebookPen,
-  RefreshCw,
+  Sparkles,
   Search,
-  Apple,
-  Play,
+  ScanSearch,
+  Image as ImageIcon,
+  ListChecks,
+  GraduationCap,
+  NotebookPen,
+  CalendarDays,
+  BookCopy,
+  Volume2,
+  BookMarked,
+  MessageSquareQuote,
+  Music,
+  WifiOff,
+  Heart,
+  Monitor,
   ArrowRight,
+  Download,
+  ShieldCheck,
 } from "lucide-react";
 
+const HERO_IMAGE =
+  "https://customer-assets.emergentagent.com/job_study-connect-64/artifacts/41a7zvdw_image.png";
+
 const features = [
-  {
-    icon: FolderTree,
-    title: "Organización por materias",
-    desc: "Crea estantes virtuales y mantén cada asignatura en su sitio.",
-  },
-  {
-    icon: NotebookPen,
-    title: "Notas sincronizadas",
-    desc: "Escribe en tu móvil y continúa donde lo dejaste, sin esfuerzo.",
-  },
-  {
-    icon: Search,
-    title: "Búsqueda inteligente",
-    desc: "Encuentra apuntes, PDFs y resúmenes en segundos.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Disponible sin conexión",
-    desc: "Estudia donde quieras, incluso sin acceso a internet.",
-  },
+  { icon: BookOpen, title: "Múltiples versiones de la Biblia", desc: "Reina Valera, NVI y más, todas a un clic." },
+  { icon: Sparkles, title: "Asistente con IA", desc: "Resuelve dudas y profundiza pasajes al instante." },
+  { icon: Search, title: "Búsqueda rápida", desc: "Localiza libros y versículos en segundos." },
+  { icon: ScanSearch, title: "Búsqueda avanzada", desc: "Filtra por palabras, frases y combinaciones." },
+  { icon: ImageIcon, title: "Modo Presentación", desc: "Fondos dinámicos para cultos y reuniones." },
+  { icon: ListChecks, title: "Temas de estudio", desc: "Agrupa versículos para tus sermones." },
+  { icon: GraduationCap, title: "Escuela Sabática", desc: "Lección diaria y versículo de memoria." },
+  { icon: NotebookPen, title: "Centro de Estudio", desc: "Notas, marcadores y progreso personal." },
+  { icon: CalendarDays, title: "Reavivados por su Palabra", desc: "Plan de lectura diario #RPSP." },
+  { icon: BookCopy, title: "Modo Dual", desc: "Alterna entre Biblia y Lección sin perder el hilo." },
+  { icon: Volume2, title: "Lectura de Voz (TTS)", desc: "Escucha la Palabra en tiempo real." },
+  { icon: BookMarked, title: "Diccionario Bíblico", desc: "Definiciones integradas con un toque." },
+  { icon: MessageSquareQuote, title: "Comentario Bíblico Adventista", desc: "CBA disponible para libros seleccionados." },
+  { icon: Music, title: "Himnario con internet", desc: "Reproduce himnos en streaming." },
+  { icon: WifiOff, title: "Himnario sin internet", desc: "Disfruta tus himnos offline en cualquier lugar." },
+  { icon: Heart, title: "Fe de Jesús", desc: "28 creencias fundamentales al alcance." },
 ];
 
-const StoreButton = ({ variant = "primary", icon: Icon, label, sub, testid }) => {
-  const base =
-    "group inline-flex items-center gap-3 rounded-full px-6 py-3.5 font-medium transition-all duration-300 hover:-translate-y-0.5";
-  const styles =
-    variant === "primary"
-      ? "bg-[#2F6BFF] text-white hover:bg-[#1E54E0] shadow-[0_10px_30px_-10px_rgba(47,107,255,0.6)]"
-      : "bg-white/5 text-white border border-white/10 hover:bg-white/10";
+const DownloadButton = ({ size = "lg", testid = "download-btn" }) => {
+  const sizes =
+    size === "lg"
+      ? "px-8 py-4 text-base"
+      : "px-5 py-2 text-sm";
   return (
-    <a href="#" data-testid={testid} className={`${base} ${styles}`}>
-      <Icon className="h-6 w-6" strokeWidth={1.8} />
-      <span className="flex flex-col leading-tight text-left">
-        <span className="text-[10px] uppercase tracking-[0.18em] opacity-80">
-          {sub}
-        </span>
-        <span className="text-sm sm:text-base font-semibold">{label}</span>
+    <a
+      href="#"
+      data-testid={testid}
+      className={`group inline-flex items-center gap-3 rounded-full bg-[#2F6BFF] hover:bg-[#1E54E0] text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_10px_30px_-10px_rgba(47,107,255,0.6)] ${sizes}`}
+    >
+      <Download className="h-5 w-5" strokeWidth={2.2} />
+      <span className="flex items-center gap-2">
+        Descargar para Windows
+        <span className="text-xs font-normal opacity-70">(.exe)</span>
       </span>
+      <ArrowRight className="h-4 w-4 -ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
     </a>
   );
 };
 
-const PhoneMockup = () => (
+const AppPreview = () => (
   <div
-    data-testid="phone-mockup"
-    className="relative mx-auto w-[260px] sm:w-[290px] aspect-[9/19] rounded-[44px] border border-white/10 bg-gradient-to-b from-[#1a1d24] to-[#0f1115] shadow-[0_40px_80px_-30px_rgba(47,107,255,0.35)] p-3"
+    data-testid="app-preview"
+    className="relative w-full max-w-[640px] mx-auto"
   >
-    {/* Notch */}
-    <div className="absolute left-1/2 top-3 -translate-x-1/2 h-6 w-28 rounded-full bg-black/80 z-10" />
-    {/* Screen */}
-    <div className="relative h-full w-full rounded-[34px] bg-[#0b0d11] overflow-hidden border border-white/5">
-      <div className="px-5 pt-10">
-        <p className="text-[11px] text-zinc-500 tracking-wide">Buenos días,</p>
-        <h3 className="text-white text-lg font-semibold mt-1">Tu biblioteca</h3>
-
-        <div className="mt-5 flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 border border-white/5">
-          <Search className="h-4 w-4 text-zinc-400" />
-          <span className="text-xs text-zinc-500">Buscar apuntes…</span>
-        </div>
-
-        <div className="mt-5 grid grid-cols-2 gap-2.5">
-          {[
-            { name: "Cálculo", color: "from-[#2F6BFF] to-[#1E54E0]", count: 12 },
-            { name: "Historia", color: "from-[#5B8DEF] to-[#2F6BFF]", count: 8 },
-            { name: "Biología", color: "from-[#4F46E5] to-[#2F6BFF]", count: 15 },
-            { name: "Física", color: "from-[#2F6BFF] to-[#0EA5E9]", count: 6 },
-          ].map((s) => (
-            <div
-              key={s.name}
-              className={`rounded-2xl bg-gradient-to-br ${s.color} p-3 aspect-square flex flex-col justify-between`}
-            >
-              <BookOpen className="h-4 w-4 text-white/90" />
-              <div>
-                <p className="text-[11px] text-white/70">{s.count} notas</p>
-                <p className="text-white text-sm font-semibold">{s.name}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-5">
-          <p className="text-[10px] uppercase tracking-wider text-zinc-500">
-            Reciente
-          </p>
-          <div className="mt-2 space-y-2">
-            {["Resumen Cap. 4", "Exámen Algebra"].map((t) => (
-              <div
-                key={t}
-                className="flex items-center gap-2.5 rounded-lg bg-white/5 px-2.5 py-2 border border-white/5"
-              >
-                <div className="h-7 w-7 rounded-md bg-[#2F6BFF]/20 flex items-center justify-center">
-                  <NotebookPen className="h-3.5 w-3.5 text-[#5B8DEF]" />
-                </div>
-                <span className="text-xs text-zinc-300">{t}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    {/* Window chrome */}
+    <div className="rounded-t-xl bg-[#1a1d24] border border-white/10 border-b-0 px-4 py-2.5 flex items-center gap-2">
+      <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+      <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+      <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+      <span className="ml-3 text-[11px] text-zinc-500 truncate">
+        Biblioteca de Estudio
+      </span>
     </div>
+    {/* Image */}
+    <div className="relative rounded-b-xl overflow-hidden border border-white/10 border-t-0 bg-[#0b0d11] shadow-[0_40px_80px_-30px_rgba(47,107,255,0.45)]">
+      <img
+        src={HERO_IMAGE}
+        alt="Biblioteca de Estudio — captura de la app"
+        className="block w-full h-auto"
+        loading="eager"
+      />
+    </div>
+    {/* Glow */}
+    <div className="pointer-events-none absolute -inset-x-10 -bottom-10 h-40 bg-[#2F6BFF]/20 blur-[80px] -z-10" />
   </div>
 );
 
@@ -132,11 +111,7 @@ function App() {
           data-testid="navbar"
           className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-10 py-6"
         >
-          <a
-            href="#"
-            data-testid="logo"
-            className="flex items-center gap-2 group"
-          >
+          <a href="#" data-testid="logo" className="flex items-center gap-2 group">
             <div className="h-9 w-9 rounded-xl bg-[#2F6BFF] flex items-center justify-center transition-transform group-hover:rotate-6">
               <BookOpen className="h-5 w-5 text-white" strokeWidth={2.2} />
             </div>
@@ -147,8 +122,9 @@ function App() {
           <a
             href="#download"
             data-testid="navbar-download-btn"
-            className="rounded-full bg-[#2F6BFF] hover:bg-[#1E54E0] px-5 py-2 text-sm font-medium text-white transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-[#2F6BFF] hover:bg-[#1E54E0] px-5 py-2 text-sm font-medium text-white transition-colors"
           >
+            <Download className="h-4 w-4" />
             Descargar
           </a>
         </nav>
@@ -157,59 +133,51 @@ function App() {
       {/* HERO */}
       <section
         data-testid="hero-section"
-        className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 pt-12 sm:pt-20 pb-24 sm:pb-32"
+        className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 pt-12 sm:pt-20 pb-24 sm:pb-28"
       >
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
-          <div>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          <div className="lg:col-span-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300 mb-6">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#2F6BFF]" />
-              Nueva versión disponible
+              <Monitor className="h-3.5 w-3.5 text-[#5B8DEF]" />
+              Aplicación para Windows 10 / 11
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
-              Todo tu material de estudio
-              <span className="text-[#5B8DEF]"> en un solo lugar.</span>
+              Tu biblioteca bíblica completa,
+              <span className="text-[#5B8DEF]"> en tu PC.</span>
             </h1>
             <p className="mt-6 text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed">
-              Organiza tus apuntes, PDFs y resúmenes por asignatura. Sincronización
-              automática, búsqueda instantánea y acceso sin conexión.
+              Biblia, Escuela Sabática, Himnario, Fe de Jesús y un asistente con IA.
+              Todo en una sola aplicación de escritorio, online y offline.
             </p>
 
-            <div
-              id="download"
-              className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4"
-              data-testid="hero-download-buttons"
-            >
-              <StoreButton
-                testid="hero-appstore-btn"
-                variant="primary"
-                icon={Apple}
-                sub="Consíguelo en"
-                label="App Store"
-              />
-              <StoreButton
-                testid="hero-googleplay-btn"
-                variant="secondary"
-                icon={Play}
-                sub="Disponible en"
-                label="Google Play"
-              />
+            <div id="download" className="mt-10" data-testid="hero-download-wrap">
+              <DownloadButton size="lg" testid="hero-download-btn" />
+              <p className="mt-3 text-xs text-zinc-500 flex items-center gap-2">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-400/70" />
+                Instalador .exe firmado · Compatible con Windows 10 y 11
+              </p>
             </div>
 
             <div className="mt-10 flex items-center gap-6 text-xs text-zinc-500">
               <div>
-                <span className="text-white font-semibold text-lg">4.9★</span>
-                <span className="ml-2">+2,500 reseñas</span>
+                <span className="text-white font-semibold text-lg">16+</span>
+                <span className="ml-2">funciones</span>
               </div>
               <div className="h-8 w-px bg-white/10" />
               <div>
-                <span className="text-white font-semibold text-lg">120K+</span>
-                <span className="ml-2">estudiantes</span>
+                <span className="text-white font-semibold text-lg">100%</span>
+                <span className="ml-2">gratis</span>
+              </div>
+              <div className="h-8 w-px bg-white/10" />
+              <div>
+                <span className="text-white font-semibold text-lg">Offline</span>
+                <span className="ml-2">disponible</span>
               </div>
             </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
-            <PhoneMockup />
+          <div className="lg:col-span-6">
+            <AppPreview />
           </div>
         </div>
       </section>
@@ -219,28 +187,31 @@ function App() {
         data-testid="features-section"
         className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 py-20 sm:py-28 border-t border-white/5"
       >
-        <div className="max-w-2xl mb-16">
+        <div className="max-w-2xl mb-14">
           <p className="text-xs uppercase tracking-[0.2em] text-[#5B8DEF] mb-4">
             Características
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            Diseñada para estudiar mejor.
+            Todo lo que necesitas para estudiar la Palabra.
           </h2>
+          <p className="mt-5 text-zinc-400 text-base sm:text-lg">
+            Una suite completa pensada para creyentes, estudiantes y predicadores.
+          </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
               <div
                 key={f.title}
                 data-testid={`feature-card-${i}`}
-                className="group rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] p-7 transition-all duration-300 hover:-translate-y-1"
+                className="group rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#2F6BFF]/15 text-[#5B8DEF] mb-6 group-hover:bg-[#2F6BFF]/25 transition-colors">
-                  <Icon className="h-6 w-6" strokeWidth={1.7} />
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#2F6BFF]/15 text-[#5B8DEF] mb-4 group-hover:bg-[#2F6BFF]/25 transition-colors">
+                  <Icon className="h-5 w-5" strokeWidth={1.8} />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-base font-semibold text-white mb-1.5 leading-snug">
                   {f.title}
                 </h3>
                 <p className="text-sm text-zinc-400 leading-relaxed">{f.desc}</p>
@@ -248,6 +219,11 @@ function App() {
             );
           })}
         </div>
+
+        <p className="mt-10 text-xs text-zinc-500 italic max-w-2xl">
+          * El Comentario Bíblico Adventista (CBA) está parcialmente disponible para
+          Génesis, Éxodo, Levítico, Números, Deuteronomio (1–5), Isaías y Efesios.
+        </p>
       </section>
 
       {/* CTA FINAL */}
@@ -259,47 +235,30 @@ function App() {
           <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-64 w-[600px] rounded-full bg-[#2F6BFF]/15 blur-[100px]" />
           <div className="relative">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-3xl mx-auto leading-tight">
-              Empieza a estudiar de forma
-              <span className="text-[#5B8DEF]"> inteligente</span> hoy.
+              Lleva la Palabra a tu escritorio
+              <span className="text-[#5B8DEF]"> hoy mismo.</span>
             </h2>
             <p className="mt-5 text-zinc-400 max-w-xl mx-auto">
-              Descarga gratis y lleva contigo toda tu biblioteca académica.
+              Descarga gratis Biblioteca de Estudio para Windows y comienza a estudiar
+              de una forma totalmente nueva.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <StoreButton
-                testid="cta-appstore-btn"
-                variant="primary"
-                icon={Apple}
-                sub="Consíguelo en"
-                label="App Store"
-              />
-              <StoreButton
-                testid="cta-googleplay-btn"
-                variant="secondary"
-                icon={Play}
-                sub="Disponible en"
-                label="Google Play"
-              />
+            <div className="mt-10 flex justify-center">
+              <DownloadButton size="lg" testid="cta-download-btn" />
             </div>
-            <a
-              href="#"
-              data-testid="cta-learn-more"
-              className="mt-8 inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-            >
-              Saber más
-              <ArrowRight className="h-3.5 w-3.5" />
-            </a>
+            <p className="mt-4 text-xs text-zinc-500">
+              Windows 10 / 11 · Instalador .exe · 100% gratis
+            </p>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer
-        data-testid="footer"
-        className="relative z-10 border-t border-white/5"
-      >
+      <footer data-testid="footer" className="relative z-10 border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6 sm:px-10 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
-          <p>© {new Date().getFullYear()} Biblioteca de Estudio. Todos los derechos reservados.</p>
+          <p>
+            © {new Date().getFullYear()} Biblioteca de Estudio. Todos los derechos
+            reservados.
+          </p>
           <div className="flex items-center gap-6">
             <a
               href="#"
