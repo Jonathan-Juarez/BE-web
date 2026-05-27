@@ -1,4 +1,5 @@
 from fastapi import FastAPI, APIRouter
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -65,6 +66,23 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+# Serve installer (.exe) with forced download headers
+DOWNLOADS_DIR = ROOT_DIR / "static" / "downloads"
+INSTALLER_FILENAME = "BibliotecaEstudio_Setup.exe"
+
+@api_router.get("/download/installer")
+async def download_installer():
+    file_path = DOWNLOADS_DIR / INSTALLER_FILENAME
+    return FileResponse(
+        path=str(file_path),
+        media_type="application/octet-stream",
+        filename=INSTALLER_FILENAME,
+        headers={
+            "Content-Disposition": f'attachment; filename="{INSTALLER_FILENAME}"',
+            "Cache-Control": "no-cache",
+        },
+    )
 
 # Include the router in the main app
 app.include_router(api_router)

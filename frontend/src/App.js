@@ -23,6 +23,7 @@ import {
   Info,
   FileText,
   Sparkle,
+  MessageCircle,
 } from "lucide-react";
 
 const HERO_IMAGE =
@@ -49,7 +50,8 @@ const features = [
   { icon: Lightbulb, title: "Apoyo Ministerial", desc: "Historias infantiles, recepción de sábado, bienvenidas, dramatizaciones, bando de oración, reflexiones y comentarios bíblicos teológicos.", tier: "premium" },
 ];
 
-const INSTALLER_URL = "/downloads/BibliotecaDeEstudio-Setup.exe";
+const INSTALLER_URL = `${process.env.REACT_APP_BACKEND_URL}/api/download/installer`;
+const WHATSAPP_URL = "https://wa.me/529612412158?text=Hola%2C%20quiero%20adquirir%20el%20Plan%20Premium%20de%20Biblioteca%20de%20Estudio";
 
 const DownloadButton = ({ size = "lg", testid = "download-btn" }) => {
   const sizes =
@@ -181,7 +183,7 @@ function App() {
               <div className="h-8 w-px bg-white/10" />
               <div>
                 <span className="text-white font-semibold text-lg">$100</span>
-                <span className="ml-2">MXN pago único</span>
+                <span className="ml-2">MXN premium</span>
               </div>
             </div>
           </div>
@@ -311,7 +313,18 @@ function App() {
               </span>
             </div>
             <p className="text-4xl font-bold mb-2">$100 <span className="text-base font-normal text-zinc-500">MXN</span></p>
-            <p className="text-sm text-zinc-400 mb-6">Una sola vez, dentro de la app.</p>
+            <p className="text-sm text-zinc-400 mb-6">Pago único · Activación por WhatsApp.</p>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="whatsapp-contact-btn"
+              className="group mb-6 inline-flex items-center gap-2.5 rounded-full bg-[#25D366] hover:bg-[#1FB855] text-white font-semibold px-5 py-2.5 text-sm transition-all duration-300 hover:-translate-y-0.5 shadow-[0_10px_25px_-10px_rgba(37,211,102,0.6)]"
+            >
+              <MessageCircle className="h-4 w-4" strokeWidth={2.2} />
+              Contactar por WhatsApp
+              <ArrowRight className="h-3.5 w-3.5 -ml-0.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+            </a>
             <ul className="space-y-2.5 text-sm text-zinc-300">
               {[
                 "Todo lo del plan Gratuito",
