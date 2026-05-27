@@ -7,6 +7,7 @@ import {
   Image as ImageIcon,
   ListChecks,
   GraduationCap,
+  Lightbulb,
   NotebookPen,
   CalendarDays,
   BookCopy,
@@ -45,7 +46,10 @@ const features = [
   { icon: Sparkle, title: "Personalización de fondos", desc: "Personaliza los fondos para tus presentaciones.", tier: "premium" },
   { icon: Volume2, title: "Lectura de Voz (TTS)", desc: "Escucha la Biblia en tiempo real.", tier: "premium" },
   { icon: ListChecks, title: "Temas de Estudio", desc: "Agrupa versículos para tus sermones.", tier: "premium" },
+  { icon: Lightbulb, title: "Apoyo Ministerial", desc: "Historias infantiles, recepción de sábado, bienvenidas, dramatizaciones, bando de oración, reflexiones y comentarios bíblicos teológicos.", tier: "premium" },
 ];
+
+const INSTALLER_URL = "/downloads/BibliotecaDeEstudio-Setup.exe";
 
 const DownloadButton = ({ size = "lg", testid = "download-btn" }) => {
   const sizes =
@@ -54,7 +58,8 @@ const DownloadButton = ({ size = "lg", testid = "download-btn" }) => {
       : "px-5 py-2 text-sm";
   return (
     <a
-      href="#"
+      href={INSTALLER_URL}
+      download
       data-testid={testid}
       className={`group inline-flex items-center gap-3 rounded-full bg-[#2F6BFF] hover:bg-[#1E54E0] text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_10px_30px_-10px_rgba(47,107,255,0.6)] ${sizes}`}
     >
@@ -123,7 +128,8 @@ function App() {
             </span>
           </a>
           <a
-            href="#download"
+            href={INSTALLER_URL}
+            download
             data-testid="navbar-download-btn"
             className="inline-flex items-center gap-2 rounded-full bg-[#2F6BFF] hover:bg-[#1E54E0] px-5 py-2 text-sm font-medium text-white transition-colors"
           >
@@ -164,7 +170,7 @@ function App() {
 
             <div className="mt-10 flex items-center gap-6 text-xs text-zinc-500">
               <div>
-                <span className="text-white font-semibold text-lg">17</span>
+                <span className="text-white font-semibold text-lg">18</span>
                 <span className="ml-2">funciones</span>
               </div>
               <div className="h-8 w-px bg-white/10" />
@@ -236,7 +242,7 @@ function App() {
         </div>
 
         <p className="mt-10 text-xs text-zinc-500 italic max-w-2xl">
-          * El Comentario Bíblico Adventista (CBA) está parcialmente disponible para
+          El Comentario Bíblico Adventista está parcialmente disponible para
           Génesis, Éxodo, Levítico, Números, Deuteronomio (1–5), Isaías y Efesios.
           La Lección, el Himnario online y la IA requieren conexión a internet.
         </p>
@@ -281,7 +287,7 @@ function App() {
                 "Centro de Estudio (notas y marcadores)",
                 "Himnario con internet (YouTube)",
                 "Diccionario Bíblico",
-                "Comentario Bíblico Adventista*",
+                "Comentario Bíblico Adventista",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
@@ -314,6 +320,7 @@ function App() {
                 "Personalización de fondos para presentar",
                 "Lectura de Voz (TTS)",
                 "Temas de Estudio para sermones",
+                "Apoyo Ministerial (7 categorías originales)",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#5B8DEF] flex-shrink-0" />
