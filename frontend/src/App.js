@@ -1,4 +1,5 @@
 import "@/App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {
   BookOpen,
   Sparkles,
@@ -19,11 +20,14 @@ import {
   Heart,
   Monitor,
   ArrowRight,
+  ArrowLeft,
   Download,
   Info,
   FileText,
   Sparkle,
   MessageCircle,
+  ShieldCheck,
+  Scale,
 } from "lucide-react";
 
 const HERO_IMAGE =
@@ -103,7 +107,7 @@ const AppPreview = () => (
   </div>
 );
 
-function App() {
+function LandingPage() {
   return (
     <div
       data-testid="landing-page"
@@ -379,24 +383,253 @@ function App() {
             reservados.
           </p>
           <div className="flex items-center gap-6">
-            <a
-              href="#"
+            <Link
+              to="/privacidad"
               data-testid="footer-privacy"
               className="hover:text-white transition-colors"
             >
               Política de privacidad
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/terminos"
               data-testid="footer-terms"
               className="hover:text-white transition-colors"
             >
               Términos de servicio
-            </a>
+            </Link>
           </div>
         </div>
       </footer>
     </div>
+  );
+}
+
+/* ---------- LEGAL PAGES ---------- */
+
+const LegalShell = ({ icon: Icon, title, subtitle, children, testid }) => (
+  <div
+    data-testid={testid}
+    className="min-h-screen bg-[#0f1115] text-white antialiased"
+    style={{ fontFamily: "'Poppins', sans-serif" }}
+  >
+    <div className="pointer-events-none fixed inset-0 overflow-hidden">
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-[#2F6BFF]/10 blur-[120px]" />
+    </div>
+
+    <header className="relative z-10">
+      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 sm:px-10 py-6">
+        <Link to="/" data-testid="legal-logo" className="flex items-center gap-2 group">
+          <div className="h-9 w-9 rounded-xl bg-[#2F6BFF] flex items-center justify-center transition-transform group-hover:rotate-6">
+            <BookOpen className="h-5 w-5 text-white" strokeWidth={2.2} />
+          </div>
+          <span className="font-semibold text-base sm:text-lg tracking-tight">
+            Biblioteca de Estudio
+          </span>
+        </Link>
+        <Link
+          to="/"
+          data-testid="legal-back"
+          className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Volver al inicio
+        </Link>
+      </nav>
+    </header>
+
+    <main className="relative z-10 mx-auto max-w-4xl px-6 sm:px-10 pt-8 sm:pt-12 pb-24">
+      <div className="mb-12">
+        <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#2F6BFF]/15 text-[#5B8DEF] mb-5">
+          <Icon className="h-6 w-6" strokeWidth={1.8} />
+        </div>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+          {title}
+        </h1>
+        {subtitle && <p className="mt-4 text-zinc-400 text-base sm:text-lg">{subtitle}</p>}
+        <p className="mt-3 text-xs text-zinc-500">
+          Última actualización: {new Date().toLocaleDateString("es-MX", { year: "numeric", month: "long", day: "numeric" })}
+        </p>
+      </div>
+
+      <div className="space-y-10 text-zinc-300 leading-relaxed">{children}</div>
+    </main>
+
+    <footer className="relative z-10 border-t border-white/5">
+      <div className="mx-auto max-w-4xl px-6 sm:px-10 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
+        <p>© {new Date().getFullYear()} Biblioteca de Estudio.</p>
+        <div className="flex items-center gap-6">
+          <Link to="/privacidad" className="hover:text-white transition-colors">
+            Política de privacidad
+          </Link>
+          <Link to="/terminos" className="hover:text-white transition-colors">
+            Términos de servicio
+          </Link>
+        </div>
+      </div>
+    </footer>
+  </div>
+);
+
+const Section = ({ title, children }) => (
+  <section>
+    <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4 tracking-tight">
+      {title}
+    </h2>
+    <div className="text-sm sm:text-base text-zinc-400 space-y-3">{children}</div>
+  </section>
+);
+
+const Bullet = ({ children }) => (
+  <li className="flex items-start gap-2.5">
+    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#5B8DEF] flex-shrink-0" />
+    <span>{children}</span>
+  </li>
+);
+
+function TermsPage() {
+  return (
+    <LegalShell
+      testid="terms-page"
+      icon={Scale}
+      title="Términos de Servicio"
+      subtitle="Reglas claras sobre el uso de Biblioteca de Estudio y su Plan Premium."
+    >
+      <div className="rounded-2xl border border-[#2F6BFF]/30 bg-[#2F6BFF]/5 p-5 sm:p-6">
+        <p className="text-sm sm:text-base text-zinc-200">
+          <span className="font-semibold text-white">AVISO:</span> Esta aplicación es un
+          desarrollo tecnológico independiente con fines didácticos. El costo de la
+          versión Premium corresponde única y estrictamente al uso de herramientas
+          técnicas y funciones lógicas propietarias del software (como el Modo Dual, el
+          Modo Presentación y personalizaciones de interfaz). Los textos bíblicos,
+          comentarios y guías de estudio aquí integrados pertenecen a sus respectivos
+          titulares, se ofrecen de forma 100% gratuita en el Plan Básico y no son
+          objeto de venta ni comercialización directa por parte del autor.
+        </p>
+      </div>
+
+      <Section title="1. Naturaleza de la aplicación">
+        <p>
+          Biblioteca de Estudio es una herramienta informática orientada al estudio
+          personal. El software procesa los contenidos externos de manera estrictamente
+          volátil o local para facilitar su lectura. El usuario final es el único
+          responsable del uso ético, privado y respetuoso de los materiales aquí
+          desplegados.
+        </p>
+      </Section>
+
+      <Section title="2. Planes y pago">
+        <ul className="space-y-2.5">
+          <Bullet>El <strong className="text-white">Plan Básico</strong> es totalmente gratuito y no requiere registro.</Bullet>
+          <Bullet>El <strong className="text-white">Plan Premium</strong> tiene un costo único de $100 MXN y desbloquea funciones técnicas avanzadas (Modo Dual, Modo Presentación, Personalización de fondos, Lectura de Voz, Temas de Estudio y Apoyo Ministerial).</Bullet>
+          <Bullet>La activación del Plan Premium se gestiona de forma directa con el autor mediante WhatsApp al número <a href={WHATSAPP_URL} className="text-[#5B8DEF] hover:underline" target="_blank" rel="noopener noreferrer">+52 961 241 2158</a>.</Bullet>
+          <Bullet>No existen suscripciones, cobros recurrentes ni pagos automáticos.</Bullet>
+        </ul>
+      </Section>
+
+      <Section title="3. Software entregado “tal cual”">
+        <p>
+          El instalador se distribuye en formato .exe para Windows 11. La aplicación se
+          encuentra en desarrollo activo y, al momento, el instalador no cuenta con
+          firma digital de un certificado emisor reconocido, por lo que Windows
+          SmartScreen puede mostrar una advertencia al ejecutarlo por primera vez. El
+          software se ofrece "tal cual", sin garantías expresas o implícitas de
+          funcionamiento ininterrumpido o libre de errores.
+        </p>
+      </Section>
+
+      <Section title="4. Uso permitido">
+        <ul className="space-y-2.5">
+          <Bullet>Uso personal, privado y con fines de estudio bíblico individual o congregacional.</Bullet>
+          <Bullet>No está permitido redistribuir el instalador modificado, revender el acceso al Plan Premium, ni extraer y reempaquetar el contenido bíblico o doctrinal para su comercialización.</Bullet>
+        </ul>
+      </Section>
+
+      <Section title="5. Contacto">
+        <p>
+          Para soporte, dudas o reportes de error, contacta al autor por WhatsApp al{" "}
+          <a href={WHATSAPP_URL} className="text-[#5B8DEF] hover:underline" target="_blank" rel="noopener noreferrer">+52 961 241 2158</a>.
+        </p>
+      </Section>
+    </LegalShell>
+  );
+}
+
+function PrivacyPage() {
+  return (
+    <LegalShell
+      testid="privacy-page"
+      icon={ShieldCheck}
+      title="Política de Privacidad"
+      subtitle="Qué datos maneja la aplicación, qué servicios externos usa y los créditos del contenido integrado."
+    >
+      <Section title="1. Datos personales">
+        <p>
+          Biblioteca de Estudio es una aplicación de escritorio que se ejecuta
+          localmente en tu equipo. No recolecta, almacena ni envía información personal
+          identificable a servidores propios. Tus notas, marcadores, progreso de
+          lectura y configuraciones se guardan únicamente en tu propio PC.
+        </p>
+      </Section>
+
+      <Section title="2. Conexiones a internet">
+        <p>Algunas funciones requieren acceso a internet para operar:</p>
+        <ul className="space-y-2.5">
+          <Bullet>El <strong className="text-white">Asistente con IA</strong> envía las preguntas que escribes a un proveedor de modelos de lenguaje para devolver una respuesta.</Bullet>
+          <Bullet>El <strong className="text-white">Himnario con internet</strong> abre los himnos correspondientes directamente en YouTube.</Bullet>
+          <Bullet>La <strong className="text-white">Lección de Escuela Sabática</strong> y el plan <strong className="text-white">Reavivados por su Palabra</strong> se consumen dinámicamente desde servidores web externos.</Bullet>
+          <Bullet>La descarga de versiones bíblicas con copyright se realiza desde servidores externos públicos.</Bullet>
+        </ul>
+      </Section>
+
+      <Section title="3. Créditos del contenido — Versiones bíblicas">
+        <ul className="space-y-2.5">
+          <Bullet>Reina-Valera 1960, 1995 y Dios Habla Hoy (DHH): © Sociedades Bíblicas Unidas.</Bullet>
+          <Bullet>Nueva Versión Internacional (NVI): © Biblica, Inc.</Bullet>
+          <Bullet>Palabra de Dios para Todos (PDT): © World Bible Translation Center.</Bullet>
+          <Bullet>Sincronización de texto y motor de búsqueda basados en el backend de código abierto <span className="font-mono text-zinc-300">bible-api.deno.dev</span>.</Bullet>
+          <Bullet>Las bases de datos y textos bíblicos con copyright son consumidos dinámicamente desde servidores web externos o almacenados localmente bajo la exclusiva administración y uso privado del usuario final.</Bullet>
+        </ul>
+      </Section>
+
+      <Section title="4. Créditos del contenido — Material doctrinal y de estudio">
+        <ul className="space-y-2.5">
+          <Bullet><strong className="text-white">Escuela Sabática:</strong> Estructura técnica provista por la comunidad de código abierto de Adventech. El contenido de la Guía de Estudio de la Biblia es propiedad intelectual y marca registrada de la General Conference of Seventh-day Adventists®.</Bullet>
+          <Bullet><strong className="text-white">Comentario Bíblico:</strong> Indexación basada en repositorios públicos de la comunidad en la web (La Biblia y su Estudio). Los derechos del Comentario Bíblico Adventista original pertenecen a Pacific Press Publishing Association y a la Asociación Publicadora Interamericana (IADPA).</Bullet>
+          <Bullet><strong className="text-white">Fe de Jesús:</strong> Texto del curso bíblico del autor Carlos E. Aeschlimann, propiedad intelectual registrada y protegida de sus casas editoras oficiales (GEMA Editores / IADPA).</Bullet>
+          <Bullet><strong className="text-white">Diccionario Bíblico:</strong> Motor de búsqueda local optimizado mediante un analizador sintáctico propietario. Los textos corresponden a compendios académicos tradicionales de uso comunitario.</Bullet>
+          <Bullet><strong className="text-white">Fondos Dinámicos:</strong> Imágenes gratuitas obtenidas de Unsplash.</Bullet>
+        </ul>
+      </Section>
+
+      <Section title="5. Responsabilidad del usuario">
+        <p>
+          Esta aplicación es una herramienta informática orientada al estudio personal.
+          El software procesa los contenidos externos de manera estrictamente volátil o
+          local para facilitar su lectura. El usuario final es el único responsable del
+          uso ético, privado y respetuoso de los materiales aquí desplegados.
+        </p>
+      </Section>
+
+      <Section title="6. Contacto">
+        <p>
+          Para cualquier consulta sobre privacidad o créditos, contacta al autor por
+          WhatsApp al{" "}
+          <a href={WHATSAPP_URL} className="text-[#5B8DEF] hover:underline" target="_blank" rel="noopener noreferrer">+52 961 241 2158</a>.
+        </p>
+      </Section>
+    </LegalShell>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/privacidad" element={<PrivacyPage />} />
+        <Route path="/terminos" element={<TermsPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
