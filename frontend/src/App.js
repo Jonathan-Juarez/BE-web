@@ -54,7 +54,7 @@ const features = [
   { icon: Lightbulb, title: "Apoyo Ministerial", desc: "Historias infantiles, recepción de sábado, bienvenidas, dramatizaciones, bando de oración, reflexiones y comentarios bíblicos teológicos.", tier: "premium" },
 ];
 
-const INSTALLER_URL = `${process.env.REACT_APP_BACKEND_URL}/api/download/installer`;
+const INSTALLER_URL = "https://github.com/Jonathan-Juarez/biblioteca-estudio/releases/latest/download/BibliotecaEstudio_Setup.exe";
 const WHATSAPP_URL = "https://wa.me/529612412158?text=Hola%2C%20quiero%20adquirir%20el%20Plan%20Premium%20de%20Biblioteca%20de%20Estudio";
 
 const DownloadButton = ({ size = "lg", testid = "download-btn" }) => {
